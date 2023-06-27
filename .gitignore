@@ -3,6 +3,7 @@ build/
 out/
 cmake-build-*/
 conan-cache/
+CMakeCache.txt
 
 # User spesific settings
 CMakeUserPresets.json
@@ -11,6 +12,7 @@ CMakeUserPresets.json
 .vs/
 .idea/
 .vscode/
+Testing/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
