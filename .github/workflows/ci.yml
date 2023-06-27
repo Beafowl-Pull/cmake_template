@@ -29,8 +29,8 @@ jobs:
       # and your own projects needs
       matrix:
         os:
-          - ubuntu-20.04
-          - macos-10.15
+          - ubuntu-latest
+          - macos-latest
         compiler:
           - gcc-11
         generator:
@@ -121,15 +121,9 @@ jobs:
           ctest -C ${{matrix.build_type}}
           gcovr -j ${{env.nproc}} --delete --root ../ --print-summary --xml-pretty --xml coverage.xml . --gcov-executable '${{ matrix.gcov_executable }}'
 
-      - name: Windows - Test and coverage
-        if: runner.os == 'Windows'
-        working-directory: ./build
-        run: |
-          OpenCppCoverage.exe --export_type cobertura:coverage.xml --cover_children -- ctest -C ${{matrix.build_type}}
-
       - name: CPack
         if: matrix.package_generator != ''
-        working-directory: ./build
+        working-directory: ./buildproc}} --delete --root ../ --print-
         run: |
           cpack -C ${{matrix.build_type}} -G ${{matrix.package_generator}}
 
