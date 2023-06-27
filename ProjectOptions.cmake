@@ -4,7 +4,7 @@ include(CheckCXXCompilerFlag)
 
 
 macro(myproject_supports_sanitizers)
-  if((CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*" OR CMAKE_CXX_COMPILER_ID MATCHES ".*GNU.*") AND NOT WIN32)
+  if((CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*" OR CMAKE_CXX_COMPILER_ID MATCHES ".*GNU.*") AND NOT WIN32 AND )
     set(SUPPORTS_UBSAN ON)
   else()
     set(SUPPORTS_UBSAN OFF)
@@ -19,7 +19,7 @@ endmacro()
 
 macro(myproject_setup_options)
   option(myproject_ENABLE_HARDENING "Enable hardening" ON)
-  option(myproject_ENABLE_COVERAGE "Enable coverage reporting" OFF)
+  option(myproject_ENABLE_COVERAGE "Enable coverage reporting" ON)
   cmake_dependent_option(
     myproject_ENABLE_GLOBAL_HARDENING
     "Attempt to push hardening options to built dependencies"
