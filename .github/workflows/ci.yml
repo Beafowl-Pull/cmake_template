@@ -2,11 +2,11 @@ name: ci
 on:
   pull_request:
     branches:
-      - main
+      - main12
       - dev
   push:
     branches:
-      - main
+      - main12
       - dev
 
 env:
