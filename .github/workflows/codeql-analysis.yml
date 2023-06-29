@@ -59,8 +59,6 @@ jobs:
         compiler: ${{ matrix.compiler }}
         vcvarsall: ${{ contains(matrix.os, 'windows' )}}
         cmake: true
-        ninja: true
-        vcpkg: false
         ccache: true
         clangtidy: false
         cppcheck: false
@@ -95,7 +93,7 @@ jobs:
       working-directory: ./build
       run: |
         ctest -C ${{matrix.build_type}}
-        gcovr -j ${{env.nproc}} --delete --root ../ --print-summary --xml-pretty --xml coverage.xml . --gcov-executable '${{ matrix.gcov_executable }}'
+        gcovr -j ${{env.nproc}} --delete --root ../ --print-summary --xml-pretty --xml coverage.xml . --gcov-executable 'gcov'
 
     - name: Publish to codecov
       uses: codecov/codecov-action@v3

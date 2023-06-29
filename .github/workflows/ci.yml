@@ -91,7 +91,6 @@ jobs:
           compiler: ${{ matrix.compiler }}
           cmake: true
           make: true
-          vcpkg: false
           ccache: true
           clangtidy: ${{ env.CLANG_TIDY_VERSION }}
           cppcheck: true
