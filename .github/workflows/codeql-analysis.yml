@@ -58,17 +58,14 @@ jobs:
       with:
         compiler: ${{ matrix.compiler }}
         vcvarsall: ${{ contains(matrix.os, 'windows' )}}
-
         cmake: true
         ninja: true
         vcpkg: false
         ccache: true
         clangtidy: false
-
         cppcheck: false
-
-        gcovr: false
-        opencppcoverage: false
+        gcovr: true
+        opencppcoverage: true
 
       # make sure coverage is only enabled for Debug builds, since it sets -O0 to make sure coverage
       # has meaningful results
