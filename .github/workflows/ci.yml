@@ -2,11 +2,11 @@ name: ci
 on:
   pull_request:
     branches:
-      - main12
+      - main
       - dev
   push:
     branches:
-      - main12
+      - main
       - dev
 
 env:
@@ -104,7 +104,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake --build ./build --config ${{matrix.build_type}}
+          cmake --build ./build --config ${{matrix.build_type}} --parallel ${{env.nproc}}
 
       - name: Unix - Test and coverage
         working-directory: ./build
