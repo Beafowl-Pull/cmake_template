@@ -8,7 +8,9 @@ function(myproject_setup_dependencies)
   # For each dependency, see if it's
   # already been provided to us by a parent project
 
-  if(NOT TARGET Catch2::Catch2WithMain)
+  find_package(Catch2 QUIET)
+
+  if(NOT TARGET Catch2::Catch2WithMain AND CATCH2_FOUND EQUAL 0)
     cpmaddpackage("gh:catchorg/Catch2@3.3.2")
   endif()
 
