@@ -94,6 +94,12 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
 
+    - name: Unix - Test and coverage
+      working-directory: ./build
+      run: |
+        ctest -C ${{matrix.build_type}}
+        gcovr -j ${{env.nproc}} --delete --root ../ --print-summary --xml-pretty --xml coverage.xml . --gcov-executable '${{ matrix.gcov_executable }}'
+
     - name: Publish to codecov
       uses: codecov/codecov-action@v3
       env:
