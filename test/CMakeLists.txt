@@ -18,6 +18,8 @@ endif()
 
 # ---- Dependencies ----
 
+find_package(Catch2 REQUIRED)
+
 if (Catch2_FOUND EQUAL 0)
   include(${Catch2_SOURCE_DIR}/extras/Catch.cmake)
 else ()
